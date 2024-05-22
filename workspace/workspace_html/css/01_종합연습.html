@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            font-size: 0px;
+            /* box-sizing: border-box; */
+        }
+        .TOP_BG {
+            /* border: 1px solid red; */
+            width: 100%;
+            height: 639px;
+            background-image: url("//images03.nicepage.com/a1389d7bc73adea1e1c1fb7e/9b22e6f1444b5ae785f3a267/pexelsphoto3326103.jpeg");
+            background-size: cover;
+            background-position: 50% 50%;
+        }
+
+        .TOP_BAR {
+            border: 1px solid #d9d9d9;
+            height: 76px;
+        }
+        
+        .TOP_BAR .T_S {
+            border: 1px solid #d9d9d9;
+
+            width: 198px;
+            height: 36px;
+            margin: 17px 0px;
+        }
+        .TOP_BAR .serch {
+
+            box-sizing: border-box;
+            
+            width: 162px;
+            height: 36px;
+            /* opacity: 0; */
+            display: inline-block;
+            background:transparent
+        }
+        .TOP_BAR .B {
+
+            box-sizing: border-box;
+            font-size: 16px;
+
+            width: 36px;
+            height: 36px;
+            display: inline-block;
+        }
+
+        .TOP_TEXT {
+            /* border: 1px solid red; */
+            font-size: 36px;
+            font-weight: 700;
+        }
+
+        .TOP_TEXT.T1 {
+            background-color: white;
+            width: 411px;
+            height: 60px;
+            position: relative;
+            top: 350px
+        }
+
+        .TOP_TEXT.T2 {
+            background-color: yellow;
+            width: 300px;
+            position: relative;
+            top: 335px;
+        }
+        .M_1 {
+            /* border: 1px solid red; */
+            width: 100%;
+            height: 749px;
+            overflow: hidden;
+        }
+        .M_1 > div {
+            display: inline-block;
+        }
+        .M_1 .text {
+            box-sizing: border-box;
+            border: 5px solid black;
+            background-color: white;
+            width: 399px;
+            height: 281px;
+            padding: 30px;
+            font-size: 16px;
+            position: relative;
+            left: 100px;
+        }
+        .M_1 h1 {
+            font-size: 36px;
+        }
+        .M_1 img {
+            width: 411px;
+            position: relative;
+            top: 150px;
+            left: 220px;
+        }
+
+        .M_1 .BG {
+            background-color: yellow;
+            width: 550px;
+            height: 629px;
+            margin: auto;
+            display: block;
+            position: relative;
+            top: -525px;
+            z-index: -1;
+        }
+        .M_2 {
+            /* border: 1px solid red; */
+            width: 100%;
+            height: 400px;
+        }
+        .M_2 > div {
+            /* border: 1px solid red; */
+            box-sizing: border-box;
+            padding: 15px;
+            display: inline-block;
+            width: 25%;
+            height: 340px;
+            margin: 30px 0;
+            vertical-align: top;
+            
+        }
+        .M_2 .img_1 {
+            height: 90%;
+            background-image: url("//images01.nicepage.com/a2/fc/a2fc4ef890f44fa0a9bb7787ce17008d.jpeg");
+            background-position: 50% 50%;
+            background-size: cover;
+            padding: 15px;
+        }
+        .M_2 .img_2 {
+            height: 90%;
+            background-image: url("//images01.nicepage.com/62/43/6243854162c536333ab218a58996077f.jpeg");
+            background-position: 50% 50%;
+            background-size: cover;
+            padding: 15px;
+        }
+        .M_2 h1 {
+            font-size: 24px;
+        }
+
+        .M_2 .text {
+
+            padding: 30px;
+            font-size: 16px;
+            margin: 20px 0 30px;
+        }
+        .M_2 .wrap_t {
+            border: 6px solid black;
+        }
+        .M_3 {
+            box-sizing: border-box;
+            /* border: 1px solid red; */
+            width: 100%;
+            height: 765px;
+            background-image: url("//images03.nicepage.com/a1389d7bc73adea1e1c1fb7e/992eb4a786e9521ea39ea995/pexelsphoto940302.jpeg");
+            background-position: 50% 50%;
+            background-size: cover;
+
+        }
+        .M_3 h1 {
+            text-align: left;
+            font-size: 36px;
+            margin: 213px 0 0 0;
+        }
+        .M_3 .text > div {
+            font-size: 16px;
+            margin: 28px 0 0 0;
+        }
+        .M_4 {
+            /* border: 1px solid red; */
+            width: 100%;
+            height: 841px;
+            position: relative;
+        }
+        .M_4 .band {
+            background-color: yellow;
+            width: 100%;
+            height: 190px;
+            padding: 30px;
+            z-index: -1;
+            position: absolute;
+            top: 100px;
+        }
+        .M_4 .img {
+            /* border: 1px solid red; */
+            width: 1040px;
+            height: 468px;
+            margin: 50px 0 0 80px;
+        }
+        .M_4 .img .img_1 {
+            /* border: 1px solid red; */
+            box-sizing: border-box;
+            padding: 30px;
+            display: inline-block;
+            width: 498px;
+            height: 450px;
+            background-image: url("//images03.nicepage.com/a1389d7bc73adea1e1c1fb7e/b997f5453a025796b7e011f6/pexelsphoto3659862.jpeg");
+            background-size: cover;
+            background-position: 50% 100%;
+            margin: 0 10px;
+        }
+        .M_4 .img .img_2 {
+            /* border: 1px solid red; */
+            box-sizing: border-box;
+            padding: 30px;
+            display: inline-block;
+            width: 498px;
+            height: 450px;
+            background-image: url("//images03.nicepage.com/a1389d7bc73adea1e1c1fb7e/89f0b40da8d05b4088f24d63/pexelsphoto704569.jpeg");
+            background-size: cover;
+            background-position: 100% 45.6%;
+            margin: 0 10px;
+        }
+        .M_4 .text {
+            /* border: 1px solid red; */
+            width: 740px;
+            margin: auto;
+            text-align: center;
+            font-size: 16px;
+        }
+        .M_4 .text h1 {
+            font-size: 36px;
+        }
+        .M_4 .read a {
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="TOP_BG">
+        <div class="TOP_BAR">
+            <div class="T_S">
+                <input class="serch">
+                <div class="B">?</div>
+            </div>
+        </div>
+        <div class="TOP_TEXT T1">YOUR FAVORITE FOOD</div>
+        <div class="TOP_TEXT T2">MAKE IT GOOD</div>
+    </div>
+    <div class="M_1">
+        <div class="text">
+            <h1>Cafe Food Menu</h1>
+            All of our food is prepared by our team of trained kitchen staff from the sealed glass kitchen where you can see your food being made, without risk of little paws getting involved.
+        </div>
+        <div><img src=//images03.nicepage.com/c461c07a441a5d220e8feb1a/e07fd7349a87546e950fb324/photo1564305564045c62d40dd0123.jpg></div>
+        <div class="BG"></div>
+    </div>
+    <div class="M_2">
+        <div><div class="img_1"></div></div>
+        <div class="wrap_t">
+            <div class="text">
+                <h1>Have a healthy afternoon snack</h1>
+                <div>The majority of people in the working world are likely familiar with the mid-afternoon slump.</div>
+            </div>
+        </div>
+        <div><div class="img_2"></div></div>
+        <div class="wrap_t">
+            <div class="text">
+                <h1>Include lots of fibre in your diet</h1>
+                Fibre is known to help aid with digestion. However, that’s not its only benefit.
+            </div>
+        </div>
+    </div>
+    <div class="M_3">
+        <div>
+            <div class="text">
+                <h1>Time to Make a Difference</h1>
+                <div>Phasellus scelerisque arcu vestibulum tempor tempor. Donec vulputate leo et metus hendrerit bibendum. Interdum et malesuada fames ac ante ipsum primis in faucibus. In scelerisque nisl nec ornare euismod.</div>
+            </div>
+        </div>
+    </div>
+    <div class="M_4">
+        <div class="img">
+            <div class="img_1"></div>
+            <div class="img_2"></div>
+        </div>
+        <div class="text">
+            <h1>Which is the tastiest food?</h1>
+            The world's most delicious food is not Massaman curry, as we suggested, but a meaty, spicy,<br>gingery dish from west Sumatra. "There is no love sincerer than the love of food," George Bernard<br>Shaw said. Judging by the number of amazing dishes out there, he was right.
+        </div>
+        <div class="read"><a href="3">READ MORE</a></div>
+        <div class="band"></div>
+    </div>
+</body>
+</html>
