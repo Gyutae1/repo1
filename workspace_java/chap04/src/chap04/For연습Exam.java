@@ -128,12 +128,85 @@ public class For연습Exam {
 				if (w < e) {
 					System.out.print(".");
 					
-				} else if (w >= e) {
+				} else if (w == e) {
 					System.out.print("+");
-				} 
+				} else {
+					System.out.print("++");
+				}
 				
 			}
 		}
+		
+		System.out.println();
+		System.out.println("7단계");
+		
+		for (int e = 4; 0 <= e ; e--) {
+			System.out.println();
+			int g = 4;
+			g = g++;
+			for (int w = 0; w <= 8; w++ ){
+				if (w < e) {
+					System.out.print(".");
+				} else if ( w > e){
+					System.out.print(".");
+				} else if ( w <= g ){
+					System.out.print("+");
+				}
+			}
+		}
+		
+		System.out.println();
+		System.out.println("구구단");
+		
+		for (int p = 2; p <=9; p++) {
+			for (int o = 1; o <=9; o++) {
+				System.out.print(p+"*"+o+"="+(p*o)+" ");
+			}
+			System.out.println();
+		}
+		System.out.println();
+		System.out.println("구구단2단계");
+		
+		for (int p = 1; p <=9; p++) {
+			for (int o = 2; o <=9; o++) {
+				if (o <= 3) {
+				System.out.print(o+"*"+p+"="+(o*p)+" ");
+				}
+				else if (o == 4) {
+					System.out.println(o+"*"+p+"="+(o*p)+" ");//포문바깥에 ln 박고 해보자
+				}
+			}
+		}
+		
+		
+		
+		System.out.println();
+		System.out.println("주사위 1단계");
+		
+		for (int d = 1; d <= 6; d++) {
+			for (int d2 = 1; d2 <= 6; d2++) {
+			System.out.println(d + "+" +d2 +"=" + (d + d2));
+			}
+		}
+		System.out.println();
+		System.out.println("주사위 2단계");
+		
+		for (int d = 1; d <= 6; d++) {
+			for (int d2 = 1; d2 <= 6; d2++) {
+				for (int y = (d+d2); y <= 12; y++) {
+					if (y==2) {
+						System.out.println("합이"+y+":"+d+","+d2);
+					} else if (y==3) {
+						System.out.println("합이"+y+":"+d+","+d2);
+					} 
+				}
+			}
+		}
+		
+		
+		
+		
+		
+		
 	}
-
 }

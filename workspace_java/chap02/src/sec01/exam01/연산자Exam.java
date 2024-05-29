@@ -90,12 +90,12 @@ public class 연산자Exam {
 		
 		String left = "수박";
 		String right = "멜론";
-		
-		String _right = left;
+		// swap 문제
+		String m_mm = left;
+		left = right;
+		right = m_mm;
 		
 		System.out.println(left); // 결과 : 멜론
-		
-		
 		System.out.println(right);	// 결과 : 수박
 		 
 	}
