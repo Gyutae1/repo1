@@ -20,20 +20,37 @@ public class BankExam {
 		System.out.println("1:예금| 2:출금 | 3:잔고 | 4:종료");
 		int I = 0;
 		int O = 0;
-		int M = 0+I;
-		int M_m = M - O;
+		int M = 0;
 		for(int B = 1 ; B <= 4 ; B++) {
 			
 			B = scan.nextInt ();
 			if (B == 1) {
 				System.out.println("입금하는 금액");
 				I = scan.nextInt ();
+				while (true) {
+					if (I < 0) {
+						System.out.println("금액을 확인하세요");
+						break;
+					} else {
+						M = M + I;
+						break;
+					}
+				}
 			} else if (B == 2) {
 				System.out.println("출금하는 금액");
 				O = scan.nextInt ();
+				while (true) {
+					if (O > M) {
+						System.out.println("잔고가 부족합니다");
+						break;
+					} else {
+						M = M - O;
+						break;
+					}
+				}
 			} else if (B == 3) {
 				System.out.println("잔고");
-				System.out.println(M_m);
+				System.out.println(M);
 			} else if (B == 4) {
 				System.out.println("종료");
 				break;
