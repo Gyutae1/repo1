@@ -165,14 +165,61 @@ public class ArrayExam {
 		
 		System.out.println(list);
 		
+		String[] study = {
+				"박규태",
+				"이제섭",
+				"박경민",
+				"정근승",
+				"현준수",
+				"남현우",
+				"김승환",
+				"조민정",
+				"이정은",
+				"김아영"
+				};
+		
+		System.out.println("총 "+ study.length +"명");
+		
+//		// 배열에서 random으로 뽑기
+//		double rand = Math.random() * study.length;
+//		// 0~9.9999
+//		int index = (int)rand;
+//		// 0~9
+//		System.out.println(study[index]);
+		
+		/*
+		 * 랜덤으로 뽑는걸 100번해서 가장 많이 나온 사람을 선택 
+		 */
+		
+		int[] vote = new int[study.length];
+		for(int i = 0; i <100; i++) {
+			double rand = Math.random() * study.length;
+			int index = (int)rand;
+			
+			vote[index] += 1;
+			
+		}
+		
+		for(int i = 0; i<vote.length; i++) {
+			System.out.println(i + vote[i]);
+		}
+		for(int i = 0; i<vote.length; i++) {
+			System.out.println(i + study[i]);
+		}
 		
 		
+		// 6개의 lotto번호를 저장하고 싶다
+		int[] lotto = new int[6];
 		
-		
-		
-		
-		
-		
+		for(int i= 0; i < lotto.length; i++) {
+			
+			lotto[i] = (int)(Math.random()*45) + 1;
+			System.out.println(lotto[i]);
+		}
+		for(int i= 0; i < lotto.length; i++) {
+			System.out.println((i+1) +"번호 :" + lotto[i]);
+		}		
+	
 	}
 
 }
