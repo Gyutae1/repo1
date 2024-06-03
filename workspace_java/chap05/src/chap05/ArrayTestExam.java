@@ -100,7 +100,7 @@ public class ArrayTestExam {
 		System.out.println("test1");
 		System.out.println();
 		
-		int[] array1
+//		int[] array1
 		
 		
 		

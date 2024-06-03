@@ -41,6 +41,8 @@ public class 대충 {
 					
 					System.out.print( array1[i] );
 							}
+				System.out.println();
+				
 				
 				System.out.println();
 				System.out.println("test2");
@@ -58,12 +60,97 @@ public class 대충 {
 				}
 				
 				System.out.println();
+				// 3. 마지막 숫자를 첫번째에 넣기(회전하는 느낌) : {4,1,5,2}
+				System.out.println();
 				System.out.println("test3");
 				System.out.println();
 				
+				for(int i = 0; i < array1.length; i++) {
+					if(i == 3) {
+						
+					}
+				}
 				
-				
+				int[] array3 = {3,4,7,5,1,4,6,4,5};
+				System.out.println();
+				// 4. 홀/짝수의 각각 개수를 출력
+				System.out.println();
+				System.out.println("test4");
+				System.out.println();
+				int 홀수 = 0;
+				int 짝수 = 0;
+				for(int i = 0; i < array3.length; i++) {
+					if (array3[i]%2 == 1) {
+						홀수++;
+					}
+					else if (array3[i]%2 == 0) {
+						짝수++;
+					}	
+				}
+				System.out.println("홀수 : "+ 홀수);
+				System.out.println("짝수 : "+ 짝수);
 
+				
+				System.out.println();
+				// 5. 주어진 수(예를 들어 4)보다 큰 숫자의 개수
+				System.out.println();
+				System.out.println("test5");
+				System.out.println();
+				
+				int k = 0;
+				for(int i = 0; i < array3.length; i++) {
+					if (array3[i] > 4) {
+					k++;
+					}
+				}
+				System.out.println("4보다 큰수의 개수는 : "+ k);
+				
+				System.out.println();
+				// 6. 두번째 최대값
+				System.out.println();
+				System.out.println("test6");
+				System.out.println();
+				int max = 0;
+				int max2 = 0;
+				
+				for(int i = 0; i<array3.length; i++) {
+					
+					if (max < array3[i]) {
+						max = array3[i];
+					}
+					else if (max > max2 && array3[i] > max2) {
+						max2 = array3[i];
+					}
+				}
+
+				System.out.println(max);
+				System.out.println("두번째 최대값 : "+ max2);
+				
+				System.out.println();
+				// 7. 내림차순으로 정렬
+				System.out.println();
+				System.out.println("test7");
+				System.out.println();
+				//
+				
+				int q = 0;
+				int e = 0;
+				int[] array4 = new int[array3.length];
+				for(int i = 0; i<array3.length; i++) {
+					for (int w = 0; w < array4.length; w++) {
+						if(q < array3[w]) {
+							q = array3[w];
+						}
+						else if (array4[i] < array3[w] && q > array4[i]) {
+							
+						}
+					}
+					array4[i]=q;
+//					System.out.print(q);
+					System.out.print(array4[i]);
+				}
+				System.out.println(q);
+				
 	}
 
 }
