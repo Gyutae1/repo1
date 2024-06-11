@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        
+
+
+
+
+
+        function btn2click() {
+            document.querySelector("#console").innerHTML = '버튼2 클릭<br>';
+        }
+
+        // let btn1 = document.querySelector("#btn1");
+        // console.log('btn1',btn1);
+
+        window.onload = function () {
+            let btn1 = document.querySelector("#btn1");
+            console.log('btn1', btn1);
+
+            btn1.onclick = function () {
+                console.log('버튼1 클릭');
+                document.querySelector("#console").innerHTML = '버튼1 클릭<br>';
+            }
+            // inclick 은 click 이벤트가 발생했을때 실행할 함수를 가지고 있는
+            // "변수"라서 딱 하나의 함수만 지정할 수 있다.
+            btn1.onclick = function () {
+                document.querySelector("#console").innerHTML = '버튼1 클릭 클릭<br>';
+            }
+
+
+            let btn3 = document.querySelector("#btn3");
+            //addEventListener
+            // 첫번째 전달인자 : 이벤트 종류
+            // 두번째 전달인자 : 실행할 함수
+            btn3.addEventListener('click', function () {
+                document.querySelector("#console").innerHTML = '버튼3 클릭<br>';
+            })
+
+            function btn3click() {
+                document.querySelector("#console").innerHTML += '버튼3 클릭 클릭 클릭<br>';
+            }
+            // 여러번 추가할 수 있음, 모두 동작함
+            btn3.addEventListener('click', btn3click);
+            // 해당 이벤트 제거
+            // 단, 익명함수였다면 제거 불가능
+            // btn3.removeEventListener('click',btn3click);
+
+
+            let id = document.querySelector("#id")
+            // id.addEventListener('keydown',function(){
+            //     console.log("keydown")
+            // })
+            id.addEventListener('keyup', function (event) {
+                console.log('keyup', event.keyCode);
+
+                if (event.keyCode == 13) {
+                    document.querySelector('#pw').focus();
+                }
+            })
+
+            document.querySelector('#pw')
+                .addEventListener('keyup', function (event) {
+                    console.log('keyup', event.keyCode);
+                    // 엔터키
+                    if (event.keyCode == 13) {
+                        document.querySelector('#login').click();
+                    }
+                })
+
+            // document.querySelector('#login').addEventListener('click', function (event) {
+            //         console.log('로그인 버튼 클릭');
+            //         let text = document.querySelector("#id").value;
+            //         console.log("아이디 :", text);
+            //         document.querySelector("#id").value = "admin"
+            //     })
+            document.querySelector('#login').addEventListener('click', function (event) {
+                if (document.querySelector("#id").value == 'admin' && document.querySelector('#pw').value == '1234'){
+                    alert('로그인되었습니다');
+                } else if (document.querySelector("#id").value == '' || document.querySelector('#pw').value == ''){
+                    alert('아이디와 비밀번호는 필수입니다')
+
+                    document.querySelector("#msg").innerText = "아이디는 필수 입니다."
+                    document.querySelector("#msg").style.display = 'block';
+                } else {
+                    alert('아이디 또는 비밀번호를 확인하세요.')
+                }
+
+                document.querySelector("#console").innerHTML = document.querySelector("#id").value;
+            })
+  
+            // 로그인 버튼 눌렀을때
+            // id는 admin
+            // password는 1234
+            // 인 경우
+            // "로그인되었습니다"
+            // 그 외에는 "아이디 또는 비밀번호를 확인하세요."
+
+
+        }
+
+        window.addEventListener('scroll', function () {
+            console.log('스크롤 변경')
+            console.log(document.documentElement.scrollTop)
+        })
+
+
+
+
+    </script>
+</head>
+
+<body style="height: 2000px;">
+    <button type="button" id="btn1">버튼1</button>
+    <button type="button" id="btn2" onclick="btn2click;alert(123)">버튼2</button>
+    <button type="button" id="btn3">버튼3</button>
+
+    <div id="console"></div>
+    <div>
+        아이디 : <input type="text" id="id"><br>
+        비밀번호 : <input type="password" id="pw"><br>
+        <br>
+        <div id="msg" style="display: none;"></div>
+        <input type="button" id="login" value="로그인">
+    </div>
+</body>
+
+</html>
