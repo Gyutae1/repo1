@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.addEventListener("load", function(){
+
+            let add = document.querySelector("#add");
+            // console.log(add);
+
+            add.addEventListener("click", function(){
+                // // console.log("클릭")
+                let todo = document.querySelector("#todo");
+                // // console.log(todo)
+                // // console.log(todo.value);
+                let list = document.querySelector("#list");
+
+                // // let html = '<input type = "checkbox">' + todo.value + '<input type="button" value="삭제"><br>';
+                // let html = '';
+                // html += '<div>'
+                // html += '<input type = "checkbox">';
+                // html += todo.value;
+                // html += '<input type="button" value="삭제"><br>';
+                // html += '</div>'
+                
+                
+                
+                // list.innerHTML += html;
+
+                // append 방식
+                let div = document.createElement('div');
+
+                let html = '';
+                html += ' <input type = "checkbox"> ';
+                html += todo.value;
+                html += ' <input type="button" class = "del" value="삭제"><br> ';
+                div.innerHTML = html;
+
+                // 삭제버튼등이 생기는 순간 
+                list.prepend(div);
+                
+                // 그렇게 추가된 삭제 버튼 들을 선택해온다
+                let dels = document.querySelectorAll('.del');
+                console.log(dels, dels.length);
+            })
+            let del = document.querySelector('.del');
+            del.addEventListener("click",function(){
+                del.style.display.none
+            })
+        })
+    </script>
+</head>
+<body>
+    <div>
+        <h1>할일 목록 관리 시스템</h1>
+        <div>
+            <input type = "text" id = "todo">
+            <input type = "button" id = "add" value="추가">
+        </div>
+        <div>
+            <input type="checkbox" id="all">전체선택
+            <input type="button" id="delete" value="선택삭제">
+            <div id = "list">
+                <!-- <input type = "checkbox"> 할일 <input type="button" value="삭제"><br>
+                <input type = "checkbox"> 할일 <input type="button" value="삭제"><br>
+                <input type = "checkbox"> 할일 <input type="button" value="삭제"><br>
+                <input type = "checkbox"> 할일 <input type="button" value="삭제"><br> -->
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
