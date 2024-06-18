@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #img_main {
+            width: 300px;
+        }
+
+        #thumbnail {
+            display: flex;
+            width: 300px;
+        }
+
+        #thumbnail img {
+            width: 100%;
+        }
+    </style>
+    <script>
+        window.addEventListener('load',function(){
+            document.querySelector('#thumbnail').addEventListener('click',function(event){
+                document.querySelector('#img_main').setAttribute('src', event.target.getAttribute('src'));
+            })
+
+
+        })
+
+
+    </script>
+</head>
+<body>
+    <div>
+        <div>
+            <img id="img_main"
+                src="https://i.namu.wiki/i/NWmuIT7JeiXWGXp4yiyJ61_R39fx5CBzos0_OJXo6dmDRQ-wkPE8oVjjj2-Sgc0j5Dt0pT7Aj-upAulruh1QpA.webp">
+        </div>
+
+        <div id="thumbnail">
+            <div>
+                <img
+                    src="https://renew.terarosa.com:9000//product/330/thumb/thumb_330_a90a2181-3ae0-497f-9198-c8ac6c510440.png">
+            </div>
+            <div>
+                <img
+                    src="https://i.namu.wiki/i/NWmuIT7JeiXWGXp4yiyJ61_R39fx5CBzos0_OJXo6dmDRQ-wkPE8oVjjj2-Sgc0j5Dt0pT7Aj-upAulruh1QpA.webp">
+            </div>
+            <div>
+                <img src="https://cdn.ftoday.co.kr/news/photo/202309/308342_309298_1440.png">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,97 @@
+DOM 선택
+// 자식을 찾는 방법
+// document : 문서 전체
+// window : 브라우저
+
+// #id_form :{} 
+// 단 하나의 DOM을 return
+// 대상이 없는 경우 null
+getElementById("id_form")
+
+// form :{}  
+// 배열로 return
+// 대상이 없는 경우 비어있는 배열 : [], length == 0
+getElementsByTagName("form")
+
+// .class_form:{} 
+// 배열로 return
+// 대상이 없는 경우 비어있는 배열 : [], length == 0
+getElementsByClassName("class_form") 
+
+// CSS 선택자로 선택
+// 단 하나의 DOM을 return
+// 대상이 없는 경우 null
+querySelector(".class_form")
+
+// CSS 선택자로 선택
+// 배열로 return
+// 대상이 없는 경우 비어있는 배열 : [], length == 0
+querySelectorAll(".class_form")
+
+// 부모를 얻는 방법
+.parentNode
+
+// class 속성을 이용하는 방법
+// 클래스의 값에 class1 추가
+// 없으면 생성 있으면 그냥 둠(중복으로 들어가지 않음)
+.classList.add("class1")
+// 클래스의 class1 제거
+// 있으면 제거 없으면 그냥 둠
+.classList.remove("class1")
+
+예를 들어
+<table id="t"></table>
+document.querySelector("#t").classList.add("class1")
+결과 : <table id="t" class="class1"></table>
+document.querySelector("#t").classList.add("class2")
+결과 : <table id="t" class="class1 class2"></table>
+document.querySelector("#t").classList.remove("class1")
+결과 : <table id="t" class="class2"></table>
+
+// 기존에 있는 속성이면 덮었쓴다
+// 기존에 없는 속성이면 추가한다
+setAttribute("속성명", "속성값")
+document.querySelector("#t").setAttribute("속성명", "속성값")
+결과 : <table id="t" class="class2" 속성명="속성값"></table>
+
+// 속성 값 가져오기
+getAttribute("속성명")
+
+
+// 내용물 가져오기
+
+// 글씨만 가져오기
+// html 그대로 가져오기
+// 값을 넣으면 텍스트가 표시됨(태그도 글씨로 표시됨)
+textContent
+
+// 글씨만 가져오기
+// 화면에 보이는대로 가져오기
+// 띄어쓰기 축약등이 적용된 상태
+// 상대적으로 textContent보다 느리다
+// 값을 넣으면 텍스트가 표시됨(태그도 글씨로 표시됨)
+innerText
+
+// 내용물 전부다(태그 포함)
+// html로 번역되서 들어감
+innerHTML
+
+// DOM을 만들어 냄
+document.createElement("h3");
+
+// DOM을 추가하는 방법
+// 자식의 마지막에 추가
+append(DOM 또는 글씨 추가 가능)
+appendChild(DOM만 추가 가능)
+// 자식의 처음에 추가
+preppend
+// 형제로 이전에 추가
+before
+// 형제로 다음에 추가
+after
+
+
+// CSS 바꾸기
+setAttribute("style", "color:red;")
+.style.카멜케이스
+.style.fontSize = "10px";

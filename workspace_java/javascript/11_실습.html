@@ -130,7 +130,7 @@
             // 지정한 자리를 제외하고 자동뽑기
             // 예를들어 첫번째 6, 두번째 8 고정하고 나머지 자동선택
             // 예를들어 두번째 5, 네번째 30, 다섯번째 35 고정하고 나머지 자동선택
-
+            // 체크박스를 6개 만들고 체크할때 벨류값을 숫자값으로 받아서 체크박스 클릭시 벨류값 받아서 그 벨류값에 로또 [i]째를 제외하고 돌려보자
             // Q&A 아코디언 구현
         });
 
@@ -259,6 +259,7 @@
             setTimeout(function () {
                 // console.log(2)
                 let now = new Date();
+                // console.log(now)
                 let h = now.getHours();
                 let m = now.getMinutes();
                 let s = now.getSeconds();
