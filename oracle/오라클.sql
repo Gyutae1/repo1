@@ -278,15 +278,16 @@ from emp;
 -- length(ename)
 select
     ename,
-    substr(ename,-(length(ename))+1,length(ename)),
-    lpad(substr(ename,-(length(ename))+1,length(ename)),length(ename),'*')
+    substr(ename,2),
+    lpad(substr(ename,2),length(ename),'*')
 from emp;
 -- 실습 4
 -- 두번째 글씨만 *
     select
         ename,
         lpad(ename,1),
-        rpad(lpad(ename,1),2,'*') ||
+        rpad(lpad(ename,1),2,'*')
+        ||
         substr(ename,3,length(ename))
     from emp;
 -- 실습 5
@@ -299,3 +300,127 @@ from emp;
         substr(ename,length(ename)/2+2,length(ename))
     from emp;
 
+select 
+    trunc(1234.5678),
+    trunc(1234.5678,2),
+    trunc(1234.5678,-2),
+    trunc(-12.34)
+
+from dual;
+
+select
+    ceil(3.14),
+    floor(3.14),
+    ceil(-3.14),
+    floor(-3.14)
+    
+from dual;
+
+select
+    sysdate,   -- sysdate : 지금 오라클 pc의 시간이 나옵니다
+    sysdate+1, -- 강사님의 pc는 9시간 차이 난다 (영국 0시 기준 한국 +9시)
+    sysdate-1  -- 날짜 정보 중 일부만 select로 표시 됨
+from dual;
+
+-- 컬럼에 +를 적으면 모두 숫자로 변경
+-- || 숫자도 문자로 적용
+
+select to_char(sysdate+9/24, 'YYYY"년"MM"월"DD"일" HH24"시" MI"분" SS"초"') from dual;
+
+select 
+    case 
+        when
+            comm is null
+            then
+--                'N/A'
+                0
+        else
+--            to_char(comm)
+                comm
+        end new_comm
+from emp;
+-- Q2
+select empno, ename, sal,
+    trunc(sal/21.5,2)as day_pay,
+    round(sal/21.5/8,1)as time_pay
+from emp;
+-- Q3
+select empno,ename,
+    to_char(hiredate,'YYYY"/"MM"/"DD')as HIREDATE,
+--    next_day(add_months(hiredate,3), 2) as r_job_0,
+    to_char(add_months(hiredate,3),'YYYY"-"MM"-"DD')as R_JOB,
+    case
+        when
+            comm is null
+            then 'N/A'
+            else to_char(comm)
+            end as comm
+from emp;
+-- Q4
+select empno,ename,
+    case
+        when mgr is null then ' '
+        else to_char(mgr)
+    end as MGR,
+    case
+        when mgr is null then '0000'
+        when substr(mgr,0,2) = 75 then '5555'
+        when substr(mgr,0,2) = 76 then '6666'
+        when substr(mgr,0,2) = 77 then '7777'
+        when substr(mgr,0,2) = 78 then '8888'
+        else to_char(mgr)
+    end as CHG_MGR
+from emp;
+
+-- count처럼 null은 제외됨
+-- count *을 많이 씀
+select sum(sal), count(sal),count(*),count(comm) from emp;
+
+select count(*) from emp where ename like '%A%'; -- 특정 단어가 들어가있는 셀의 개수
+
+select max(sal), max(ename), min(hiredate), min(comm), avg(sal) from emp;
+
+-- 부서별로 sal을 sum 하자 deptno union all 을 합치자 
+
+select sum(sal), avg(sal) from emp
+where deptno =10
+union all
+select sum(sal), avg(sal) from emp
+where deptno =20
+union all
+select sum(sal), avg(sal) from emp
+where deptno =30;
+
+-- distinct 처럼 중복을 제거해줌, 또는 분류해줌
+-- select에는 group by한 것이나 다중행 함수(집계 함수)
+select deptno, avg(sal),sum(sal),count(*) from emp
+group by deptno;
+
+select deptno,empno,sum(sal),count(*) from emp
+group by deptno,empno;
+
+select deptno,job,count(*)from emp
+group by deptno,job
+
+order by deptno, job;
+
+-- having : group by 에서만 사용된다
+-- 집계 함수를 조건으로 걸고 싶은 경우에 사용
+
+select deptno, job, avg(sal)
+from emp
+group by deptno,job
+--    having avg(sal)>= 2000;
+--    having count(*) >= 2;
+    having deptno = 20;
+    
+select deptno,
+trunc(avg(sal))as avg_sal,
+max(sal)as max_sal,
+min(sal)as min_sal,
+count(*)as cnt from emp
+group by deptno;
+
+select job,count(*) from emp
+group by job
+having count(*) >= 3;
