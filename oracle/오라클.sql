@@ -424,3 +424,118 @@ group by deptno;
 select job,count(*) from emp
 group by job
 having count(*) >= 3;
+
+select * from dept;
+
+/* 5 */select job, count(*) cnt
+/* 1 */from emp
+/* 2 */where sal > 1000
+/* 3 */group by job
+/* 4 */having count(*) >= 3
+/* 6 */order by cnt desc;
+
+select emp.ename,/*emp.loc*/ dept.loc, /*deptno*/ emp.deptno
+from emp, dept
+where emp.deptno = dept.deptno
+order by empno;
+-- 테이블 두개 이상 조회할때 관계를 꼭 알려줘야 원하는 정보만 출력된다
+-- 전체 테이블 수 - 1 개의 조건이 적당하다
+
+select * 
+from emp e, dept d
+where e.deptno = d.deptno;
+
+select ename, d.* -- *와 컬럼을 같이 쓰는 경우 *에 테이블을 지정해줘야 한다. 
+from emp e, dept d
+where e.deptno = d.deptno;
+
+select * from salgrade;
+
+select * from emp e, salgrade s
+where e.sal >= s.losal and e.sal <= s.hisal;
+
+select e1.empno, e1.ename, e1.mgr, e2.empno, e2.ename
+from emp e1, emp e2
+where e1.mgr = e2.empno;
+
+select * 
+from emp join dept
+using(deptno)
+order by deptno;
+
+select *
+from emp join dept on(emp.deptno = dept.deptno);
+
+-- left outer join : 왼쪽 테이블을 모두 출력하는걸 보장해준다
+select *
+from emp e1 left outer join emp e2 on(e1.mgr = e2.empno);
+
+-- quiz 1
+-- empno, ename, dname, loc 출력 :결과 14줄
+
+-- quiz 2
+-- 사번,이름,부서명,급여등급을 출력 : 결과 14줄
+
+select empno, ename, dname, loc
+from emp e, dept d
+where e.deptno = d.deptno
+;
+
+select e.empno, e.ename, d.dname, s.grade
+from emp e,dept d, salgrade s
+where e.deptno = d.deptno
+and e.sal >= s.losal and e.sal <= s.hisal;
+
+select e.empno, e.ename, d.dname, s.grade
+from salgrade s , emp e join dept d using(deptno)
+where (e.sal >= s.losal and e.sal <= s.hisal);
+
+select * from emp;
+select * from salgrade;
+select * from dept;
+
+-- quiz 3
+-- 상사 보다 월급이 높은 사원의 ename, sal, 매니저 이름, 매니저 급여
+
+select e1.ename,e1.sal,e2.ename,e2.sal
+from emp e1 left outer join emp e2 on(e1.mgr = e2.empno)
+where e1.sal > e2.sal;
+
+-- Q1
+select e.deptno,d.dname,e.empno,e.ename,e.sal
+from emp e, dept d
+where e.deptno = d.deptno
+and e.sal > 2000
+order by deptno;
+
+-- Q2
+select e.deptno, d.dname, trunc(avg(sal)), max(sal),min(sal),count(*)
+from emp e, dept d
+where e.deptno = d.deptno
+group by e.deptno,d.dname;
+
+-- Q3
+select d.deptno,dname,e.empno,e.ename,job,sal
+from dept d left outer join emp e on(e.deptno = d.deptno)
+order by d.deptno,e.ename;
+
+
+select * from emp
+where sal > (select sal from emp where ename = 'JONES');
+
+--평균보다 많은 연봉을 받는사람들
+select * from emp
+where sal > (select avg(sal) from emp);
+
+--BLACK 씨보다 많은 연봉을 받는사람들
+select * from emp
+where sal > (select sal from emp where ename = 'BLAKE');
+
+--JONES 씨와 같은 직업을 가진 사람들
+select * from emp
+where job = (select job from emp where ename = 'JONES');
+
+select * from emp
+where sal in (
+select max(sal) from emp group by deptno
+);
