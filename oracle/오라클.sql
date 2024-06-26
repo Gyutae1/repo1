@@ -539,3 +539,145 @@ select * from emp
 where sal in (
 select max(sal) from emp group by deptno
 );
+
+select *
+from (select * from emp where deptno = 10) e10;
+
+select rownum, e.* from (select * from emp order by ename) e
+--where rownum = 4
+;
+
+select job,count(*) from emp
+group by job
+having count(*) >= 3;
+
+select * 
+from   (select job,count(*) cnt from emp
+        group by job)
+where cnt >= 3;
+
+with 
+e10 as (select * from emp where deptno= 10),
+e20 as (select * from emp where deptno= 20)
+select * from e10;
+
+-- Q1
+select e.job,e.empno,e.ename,e.sal,d.deptno,d.dname from emp e, dept d
+where e.deptno = d.deptno
+and e.job = (select job from emp where ename = 'ALLEN')
+order by sal desc, ename;
+select * from salgrade s
+;
+-- Q2
+select empno,ename,dname,hiredate,loc,sal,grade from emp e,salgrade s,dept d
+where e.sal between losal and hisal
+and e.sal > (select avg(sal) from emp)
+and e.deptno = d.deptno
+order by sal desc,empno;
+--select job from emp where deptno = 10;
+
+-- Q3
+select job from emp where deptno = 30;
+--(select * from emp where deptno = 30)
+--(select * from emp where deptno = 10)
+select e.empno,e.ename,e.job,d.deptno,dname,loc from emp e, dept d
+where e.deptno = d.deptno
+and d.deptno = 10
+and job not in (select job from emp where deptno = 30);
+
+-- Q4
+select empno,ename,sal,grade from emp,salgrade 
+where sal between losal and hisal
+and sal > (select max(sal) from (select * from emp where job = 'SALESMAN'))
+order by empno;
+
+-- 12장
+
+select * from emp;
+select * from salgrade;
+desc emp;
+
+create table emp_ddl (
+    empno number(4),    -- 숫자 4자리!
+    ename varchar2(10), -- 10 바이트!
+    job varchar2(9),    -- 제한보다 적은 글씨가 적히면 글씨 만큼의 공간만 차지
+    mgr number(4),
+    hiredate date,
+    sal number(7,2),    -- 2번째 전달인자는 소수점 ()자리까지 기록할 수 있다
+    comm number(7,2),
+    deptno number(2)
+);
+
+select * from emp_ddl;
+desc emp_ddl;
+
+-- 테이블을 그대로 복사하는 방법---------
+create table dept_ddl
+    as select * from dept;
+-------------------------------------
+select * from dept_ddl;
+
+create table emp_ddl_30
+as select empno,ename,sal,deptno from emp where deptno = 30;
+
+select * from emp_ddl_30;
+
+select * from emp
+where 1 <> 1 ;
+
+create table emp_alter
+    as select * from emp;
+    
+select * from emp_alter;
+
+alter table emp_alter
+ add hp varchar2(20);
+ 
+select * from emp_alter;
+
+alter table emp_alter
+    rename column hp to tel;
+
+select * from emp_alter;
+
+alter table emp_alter
+    modify empno number(5);
+-- 크키가 커지는건 가능(줄어드는건 불가능)
+alter table emp_alter
+    modify empno number(4);
+    
+alter table emp_alter
+    drop column tel;
+
+select * from emp_alter;
+
+rename emp_alter to emp_rename;
+
+select * from emp_rename;
+
+truncate table emp_rename;
+
+drop table emp_rename;
+
+
+create table dept_temp
+as select * from dept;
+
+select * from dept_temp;
+
+insert into dept_temp(deptno,dname,loc)
+values (50,'DATABASE','SEOUL');
+
+insert into dept_temp -- 테이블명 뒤에 ()을 생략하면 모든 컬럼
+values (60,'network','Busan');
+
+insert into dept_temp       -- 
+values (70,'웹',null); -- null 넣기 이거만 쓰자~
+
+insert into dept_temp    -- 이것도 null이지만
+values (80,'mobile',''); -- java에서 읽을때 null로 인식하지 못한다.
+
+select * from dept_temp;
+
+insert into dept_temp(deptno,loc)
+values (90,'인천');
