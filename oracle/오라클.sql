@@ -137,7 +137,7 @@ where (deptno = 10 or deptno = 20);
 select empno, ename, sal, deptno from emp
 where deptno =10
             -- union : 중복된 자료를 제거해줌
-    union -- 서로 다른 테이블에 있는 조회 결과물을 한번에 볼 수 있게 해준다
+    union   -- 서로 다른 테이블에 있는 조회 결과물을 한번에 볼 수 있게 해준다
             -- 단, 조회한 컬럼의 개수,타입(int,string ...)이 같아야 한다.
 select empno, ename, sal, deptno from emp
 where deptno =10;
@@ -671,7 +671,7 @@ values (50,'DATABASE','SEOUL');
 insert into dept_temp -- 테이블명 뒤에 ()을 생략하면 모든 컬럼
 values (60,'network','Busan');
 
-insert into dept_temp       -- 
+insert into dept_temp       
 values (70,'웹',null); -- null 넣기 이거만 쓰자~
 
 insert into dept_temp    -- 이것도 null이지만
@@ -681,3 +681,123 @@ select * from dept_temp;
 
 insert into dept_temp(deptno,loc)
 values (90,'인천');
+
+create table emp_temp
+as select * from emp;
+ select * from emp_temp;
+insert into emp_temp
+values (9999,'홍길동','PRESIDENT',null,'2001/01/01',5000,1000,10);
+
+insert into emp_temp
+values (1111,'성춘향','MANAGER',9999,'2001/01/05',4000,null,20);
+
+insert into emp_temp
+values (2111,'이순신','MANAGER',9999,to_date('07/01/2001','DD-MM-YYYY'),4000,null,20);
+
+insert into emp_temp
+values (3111,'심청이','MANAGER',9999,sysdate,4000,null,30);
+insert into emp_temp
+select * from emp where deptno = 10; -- insert 가 위험 부담이 적다
+
+select * from dept_temp2;
+
+create table dept_temp2
+as select * from dept;
+
+update dept_temp2
+set loc = 'SEOUL';
+rollback;
+
+
+-- update 하기전에 select로 where 조건이 정확한지 확인하고
+-- where를 그대로 복사해서 update에 붙여넣도록 하자 꼭 꼮!!
+update dept_temp2
+set dname = 'DATABASE',
+    loc = 'SEOUL'
+where deptno = 40;
+
+select * from dept_temp2;
+
+select * from dept_temp2
+where deptno = 40;
+
+create table emp_temp2
+as select * from emp;
+
+select * from emp_temp2;
+
+select * from emp_temp2
+where job = 'MANAGER';
+
+delete emp_temp2
+where job = 'MANAGER';
+
+-- emp_temp2 에서 급여가 1000이하인 
+-- 사원의 급여를 3% 인상하시오
+
+select *from emp_temp2
+where sal <= 1000;
+
+update emp_temp2
+set sal = (sal*1.03)
+where sal <= 1000;
+
+delete emp_temp2;
+select *from emp_temp2;
+rollback;
+
+select * from dict;
+
+select * from user_tables;
+
+select * from user_constraints;
+
+-- index 색인
+-- 오름차순, 내림차순 따로 관리
+create index idx_emp_sal
+ON EMP(SAL);
+
+select * from user_indexes;
+
+drop index idx_emp_sal;
+/*+ index(idx_emp_sal) */
+-- 강제 hint
+select /*+ index(idx_emp_sal) */
+* from emp e
+order by empno desc;
+-- plan
+-- sql developer에서 상단 세번째 아이콘 "계획설명"
+
+
+select max(empno),max(empno+1) from emp;
+
+insert into emp_temp2 (empno,ename)
+    values (
+            (select max(empno)+1 from emp_temp2),
+            '신입이3'
+    );
+select * from emp_temp2;
+rollback;
+
+create table tb_user (
+    user_id number,
+    user_name varchar2(30)
+);
+
+select * from tb_user;
+
+create sequence seq_user;
+
+select seq_user.nextval from dual;
+select seq_user.currval from dual;
+
+insert into tb_user (user_id, user_name)
+values (seq_user.nextval,'유저명1');
+
+insert into tb_user (user_id, user_name)
+values (seq_user.nextval,'유저명2');
+
+insert into tb_user (user_id, user_name)
+values (seq_user.nextval,'유저명3');
+
+select * from tb_user;
