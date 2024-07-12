@@ -44,6 +44,7 @@ public class StudentExam {
 		a1.join(s2);
 		a1.join(s3);
 		a1.join(s4);
+		a1.join(new Student("최민수",30));
 		a1.viewList();
 
 

@@ -11,12 +11,19 @@ public class ACademie {
 		Aname = a;
 	}
 	void join(Student s) {
-		Students[count] = s;
-		count++;	
+		if(count < Students.length) {
+			Students[count] = s;
+			count++;
+		}else {
+			System.out.println("정원이 다 찼습니다.");
+		}
 	}
 	void viewList() {
 		for(int i=0;i<Students.length;i++) {
-			System.out.println(Students[i]);
+			Student s = Students[i];
+			if(s != null) {
+			System.out.println("이름 : "+s.name+"  나이 :"+s.age);
+			}
 		}
 	}
 
