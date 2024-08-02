@@ -44,5 +44,10 @@ count 개수 세기
 1. from에 테이블, 테이블
 2. join using (동일한 컬럼명 일때만 가능)
 3. left outer join on(합성 조건)
+     losal hisal
+1등급 700  1000 
 
 
+select * from emp e,dept d,salgrade s
+where e.deptno = d.deptno
+and (e.sal >= losal and e.sal <=hisal)
