@@ -42,7 +42,7 @@
 			<td>${list1[i].dueDate }</td>
 			<td>${list1[i].finished }</td>
 			<td><a href="/proj3_todo/todo/update?tno=${ list1[i].tno }">수정하기</a></td>
-			<td><a href="/proj3_todo/todo/delete?tno=${ list1[i].tno }">삭제하기</a></td>
+			
 	</tr>
 	</c:forEach>
 	
