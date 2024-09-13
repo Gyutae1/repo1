@@ -13,6 +13,14 @@
 <title>Insert title here</title>
 </head>
 <body>
+<div style="text-align: right;">
+	<c:if test="${not empty loginDTO }">
+		${loginDTO.ename}님 환영합니다
+	</c:if>
+	<c:if test="${empty loginDTO }">
+		<a href="login.jsp">로그인</a>
+	</c:if>
+</div>
 	<h1>emp2</h1>
 	<form method="get" action="Emp">
 		empno:<input type="text" name="empno">
