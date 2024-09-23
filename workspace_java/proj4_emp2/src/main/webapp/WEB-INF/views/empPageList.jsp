@@ -54,7 +54,7 @@
 			</tr>
 		</c:forEach>
 	</table>
-	<%
+<%
 	Map map = (Map) request.getAttribute("map");
 	int totalCount = (int) map.get("totalCount");
 
@@ -65,8 +65,15 @@
 	int pageNo = Integer.parseInt(str_pageNo);
 
 	int lastPage = (int) Math.ceil((double) totalCount / countPerPage);
-	%>
-	<c:set var="lastPage2" value="<%=lastPage%>" scope="page" />
+	
+	// 한번에 보여줄 페이지의 개수
+	int countPersection = 3;
+	// 페이지 섹션 위치
+	int position = (int)Math.floor((double)pageNo / countPersection);
+	int sec_first = (position * countPersection) + 1;
+	int sec_last = (position + 1) * countPersection;
+%>
+<c:set var="lastPage2" value="<%=lastPage%>" scope="page" />
 
 	이전
 

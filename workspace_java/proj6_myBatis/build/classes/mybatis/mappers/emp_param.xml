@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.emp.param">
+	<insert id="insertEmp" parameterType="emp.crud.EmpDTO">
+    	insert into emp0 (empno, ename, hiredate)
+    	values (#{empno},#{ename},#{hireDate})
+    </insert>
+    
+    <select id="selectParamOneEmp" resultType="emp.crud.EmpDTO">
+    	select 
+    		empno,ename,hiredate
+    	 from emp0
+    	where empno = #{empno}
+    </select>
+    
+    <update id="updateParamEmp" parameterType="emp.crud.EmpDTO">
+    	UPDATE
+    		emp0
+    	SET
+    		ename = #{ename}
+    	WHERE
+    		empno = #{empno}
+    </update>
+    <delete id="ParamEmpDelete" parameterType="int">
+    DELETE FROM emp0
+    WHERE empno = #{empno}
+	</delete>
+</mapper>
