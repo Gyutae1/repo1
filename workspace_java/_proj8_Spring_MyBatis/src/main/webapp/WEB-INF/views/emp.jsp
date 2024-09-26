@@ -16,7 +16,7 @@
 	<nav>emp > 회원 목록</nav>
 </header>
 <main>
-	<a href="emp0?cmd=join">회원가입</a>
+	<a href="join">회원가입</a>
 	<section>
 		<article>
 			<form id="frm" method="get" action="emp0">
@@ -55,19 +55,19 @@
 								<input type="checkbox" name="check" value="${dto.empno }">
 							</td>
 							<td>${dto.empno }</td>
-							<td><a href="emp0?cmd=detail&empno=${dto.empno }">${dto.ename }</a></td>
+							<td><a href="/human/detail?empno=${dto.empno}">${dto.ename }</a></td>
 							<td>${dto.job }</td>
 							<td>${dto.sal }</td>
 							<td>
 								<fmt:formatDate value="${dto.hireDate }" pattern="yyyy년 MM월 dd일 hh시 mm분 ss초" />
 							</td>
-<!-- 							<td> -->
-<!-- 								<form method="post" action="emp0"> -->
-<!-- 									<input type="hidden" name="cmd" value="delete"> -->
-<%-- 									<input type="hidden" name="empno" value="${dto.empno }"> --%>
-<!-- 									<input type="submit" value="삭제"> -->
-<!-- 								</form> -->
-<!-- 							</td> -->
+							<td>
+								<form method="post" action="delete">
+									<input type="hidden" name="cmd" value="delete">
+									<input type="hidden" name="empno" value="${dto.empno }">
+									<input type="submit" value="삭제">
+								</form>
+							</td>
 						</tr>
 					</c:forEach>
 				</tbody>
