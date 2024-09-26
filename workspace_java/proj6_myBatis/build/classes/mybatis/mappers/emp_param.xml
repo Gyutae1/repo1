@@ -3,10 +3,8 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mapper.emp.param">
-	<insert id="insertEmp" parameterType="emp.crud.EmpDTO">
-    	insert into emp0 (empno, ename, hiredate)
-    	values (#{empno},#{ename},#{hireDate})
-    </insert>
+	
+
     
     <select id="selectParamOneEmp" resultType="emp.crud.EmpDTO">
     	select 
@@ -14,6 +12,10 @@
     	 from emp0
     	where empno = #{empno}
     </select>
+    <insert id="insertEmp" parameterType="emp.crud.EmpDTO">
+    	insert into emp0 (empno, ename, hiredate)
+    	values (#{empno},#{ename},#{hireDate})
+    </insert>
     
     <update id="updateParamEmp" parameterType="emp.crud.EmpDTO">
     	UPDATE

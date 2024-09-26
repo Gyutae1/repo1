@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="mapper.emp">
+<mapper namespace="kr.or.human.emp.dao.EmpDAO">
 
 	<select id="selectEmp" resultType="empDTO">
 		select * from emp0
@@ -11,8 +11,17 @@
     	insert into emp0 (empno, ename, hiredate)
     	values (#{empno},#{ename},#{hireDate})
     </insert>
-    
-    <update id="updateParamEmp" parameterType="EmpDTO">
+    <select id="selectEmpOne" resultType="empDTO" parameterType="int">
+	
+		SELECT
+			*
+		FROM
+			emp0
+		WHERE
+			empno = #{_parameter}
+
+	</select>
+    <update id="updateEmp" parameterType="EmpDTO">
     	UPDATE
     		emp0
     	SET
@@ -20,7 +29,7 @@
     	WHERE
     		empno = #{empno}
     </update>
-    <delete id="ParamEmpDelete" parameterType="int">
+    <delete id="deleteEmp" parameterType="int">
     DELETE FROM emp0
     WHERE empno = #{empno}
 	</delete>
