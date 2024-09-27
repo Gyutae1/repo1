@@ -28,7 +28,19 @@
 </c:choose>
 
 
-<form method="post" action="emp0">
+
+<c:choose>
+	<c:when test='${cmd == "detail" }'>
+		<form>
+	</c:when>
+	<c:when test='${cmd == "edit" }'>
+		<form method="post" action="edit">
+	</c:when>
+	<c:otherwise>
+		<form method="post" action="join">
+	</c:otherwise>
+</c:choose>
+
 	사원번호 :
 	 	<c:choose>
 			<c:when test='${ (cmd == "detail") or (cmd == "edit") }'>
@@ -67,7 +79,7 @@
 	<br>
 		<c:choose>
 			<c:when test='${cmd == "detail" }'>
-				<a href="emp0?cmd=edit&empno=${empDTO.empno }">수정하기</a>
+				<a href="edit?empno=${empDTO.empno }">수정하기</a>
 			</c:when>
 			<c:when test='${cmd == "edit" }'>
 				<a href="emp0?cmd=detail&empno=${empDTO.empno }">취소</a>
