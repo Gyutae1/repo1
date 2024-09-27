@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -69,8 +71,12 @@ public class ParamController {
 			@ModelAttribute("empDTO") EmpDTO dto4,
 			
 			// model에 넣는 key를 class명의 앞글자를 소문자로 하는 경우 생략 가능
-//			@ModelAttribute("empdTO")
-			EmpDTO dto5
+//			@ModelAttribute("empDTO")
+			EmpDTO dto5,
+			
+			@RequestBody EmpDTO dto6,	// post,put,delete 등으로 넘어온 json을 분석해서 dto6에 넣음
+			
+			@PathVariable("key") String name	// 주소 중 {key}영역의 값을 name에 할당
 			
 			
 	) {
